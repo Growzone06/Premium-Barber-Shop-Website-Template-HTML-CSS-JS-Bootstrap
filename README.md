@@ -1,4 +1,4 @@
-Premium Barber Shop Website Template – HTML, CSS, JS & Bootstrap
+**Premium Barber Shop Website Template – HTML, CSS, JS & Bootstrap**
 
 This repository contains a fully responsive and professionally designed Barber Shop Website Template built using HTML, CSS, JavaScript, and Bootstrap 5. The template features a luxurious black and gold theme, smooth animations, glassmorphism UI elements, and clean, modern layout styling that gives any barber shop, grooming studio, or salon an instant premium online presence. It is perfect for businesses, freelancers, and developers who want to deliver a high-quality website quickly.
 

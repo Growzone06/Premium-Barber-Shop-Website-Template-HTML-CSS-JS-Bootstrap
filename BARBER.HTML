@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowZone | Premium Barber Experience</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --light: #ffffff;
+            --dark: #121212;
+            --gray: #cccccc;
+            --transition: all 0.3s ease;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, span, li, a, label, .text-muted, .text-light {
+            color: var(--light) !important;
+        }
+
+        .text-muted {
+            color: var(--secondary) !important;
+        }
+
+        .text-gold {
+            color: var(--secondary) !important;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .display-1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .display-1 {
+                font-size: 3rem;
+            }
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .bg-dark {
+            background-color: var(--dark) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--dark) !important;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #c19b2a;
+            border-color: #c19b2a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-outline-light {
+            border-width: 2px;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(18, 18, 18, 0.8);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--secondary) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+            color: var(--light) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+
+        /* Mobile Menu Animation Enhancements (991px and below) */
+        @media (max-width: 991px) {
+            .navbar-collapse.show {
+                background: rgba(18, 18, 18, 0.98); /* Slightly darker/more opaque when open */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                border: 1px solid var(--glass-border);
+                border-top: none;
+                border-radius: 0 0 10px 10px;
+            }
+            
+            .navbar-nav {
+                padding: 0 1rem;
+            }
+
+            .nav-item {
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+                padding: 0.5rem 0; /* Add vertical spacing */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .nav-item:last-child {
+                border-bottom: none;
+                margin-top: 0.5rem; /* Separator for book now button */
+            }
+
+            .nav-link {
+                padding: 0.5rem 1rem !important;
+                border-radius: 4px;
+            }
+            
+            /* Staggered animation when menu is open */
+            .navbar-collapse.show .nav-item {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* Staggered delay for each link */
+            .navbar-collapse.show .nav-item:nth-child(1) { transition-delay: 0.05s; }
+            .navbar-collapse.show .nav-item:nth-child(2) { transition-delay: 0.10s; }
+            .navbar-collapse.show .nav-item:nth-child(3) { transition-delay: 0.15s; }
+            .navbar-collapse.show .nav-item:nth-child(4) { transition-delay: 0.20s; }
+            .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.25s; }
+            .navbar-collapse.show .nav-item:nth-child(6) { transition-delay: 0.30s; }
+            .navbar-collapse.show .nav-item:nth-child(7) { transition-delay: 0.35s; } /* Booking link */
+        }
+
+
+        /* Hero Section - Glassmorphism Applied */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width background */
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/897271/pexels-photo-897271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+        
+        .hero-image::after { /* Dark overlay for better text contrast and blurring */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55); 
+            z-index: 1;
+        }
+
+        .hero-content { 
+            z-index: 2;
+            position: relative;
+            /* Applying Glassmorphism */
+            background: var(--glass); 
+            backdrop-filter: blur(15px); /* Increased blur for premium feel */
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 3rem; 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        /* Removing the unused .hero-bg from previous design */
+        .hero-bg {
+            display: none;
+        }
+        
+        /* General Glass Card Style (used elsewhere) */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .service-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Products Section */
+        .product-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 1px solid var(--secondary);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: var(--dark) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+        }
+
+        /* Gallery */
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        /* Team */
+        .team-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-img {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        /* FAQ */
+        .accordion-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: transparent;
+            color: var(--light) !important;
+            font-weight: 600;
+            padding: 1.5rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary) !important;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--secondary);
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            color: var(--gray) !important;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Form elements */
+        .form-control, .form-select {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            color: var(--secondary) !important; 
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--secondary);
+        }
+
+        .form-floating > label {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            padding: 4rem 0 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            color: var(--light);
+            margin-right: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--dark) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1000;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            background-color: #c19b2a;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-image, .hero-image::after {
+                width: 100%;
+            }
+            
+            .hero-content {
+                /* Keep the glass effect */
+                background: var(--glass);
+                padding: 3rem 2rem;
+                border-radius: 12px;
+                margin-top: 2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 0;
+            }
+            
+            .display-1 {
+                font-size: 2.5rem;
+            }
+
+            .footer {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">GrowZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="#booking">Book Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-image"></div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center"> 
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <h1 class="display-1">Precision Cuts <span class="text-gold">Elevated</span> Style</h1>
+                        <p class="lead mb-4">Experience the art of traditional barbering with modern luxury. Our master barbers craft personalized styles that define confidence.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#booking" class="btn btn-primary">Book Now</a>
+                            <a href="#services" class="btn btn-outline-light">View Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Our Premium Services</h2>
+                    <p class="text-muted">Experience the finest barber services with attention to detail and luxury.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h4>Classic Haircut</h4>
+                        <p class="text-muted">Precision cuts tailored to your style and facial structure with traditional techniques.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-air-freshener"></i>
+                        </div>
+                        <h4>Beard Grooming</h4>
+                        <p class="text-muted">Expert shaping, trimming, and conditioning for a perfectly maintained beard.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h4>Hot Towel Shave</h4>
+                        <p class="text-muted">Traditional straight razor shave with hot towels and premium products for ultimate relaxation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Premium Products</h2>
+                    <p class="text-muted">Crafted for the modern gentleman who demands excellence.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="product-card fade-in">
+                        <div class="product-image" style="background-image: url('https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"></div>
+                        <div class="product-content">
+                            <h4>Matte Pomade</h4>
+                            <p class="text-muted mb-3">Strong hold with natural matte finish. Perfect for textured styles.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-gold mb-0">$24.99</span>
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card fade-in">
+                        <div class="product-image" style="background-image: url('https://images.pexels.com/photos/7697712/pexels-photo-7697712.jpeg?_gl=1*1c3ruby*_ga*NTQ4ODI2MzI2LjE3NjM4MDIxNjI.*_ga_8JE65Q40S6*czE3NjM4MjU3NDkkbzIkZzEkdDE3NjM4MjU4MjUkajU5JGwwJGgw?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"></div>
+                        <div class="product-content">
+                            <h4>Professional Razor</h4>
+                            <p class="text-muted mb-3">Precision-engineered for the closest, most comfortable shave.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-gold mb-0">$39.99</span>
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card fade-in">
+                        <div class="product-image" style="background-image: url('https://images.pexels.com/photos/3998425/pexels-photo-3998425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"></div>
+                        <div class="product-content">
+                            <h4>Beard Oil</h4>
+                            <p class="text-muted mb-3">Nourishing blend of natural oils for soft, healthy beard growth.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-gold mb-0">$19.99</span>
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Service Packages</h2>
+                    <p class="text-muted">Choose the perfect grooming experience for your needs.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="pricing-card fade-in">
+                        <h4>Classic Cut</h4>
+                        <div class="price">$35</div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 text-muted">Precision Haircut</li>
+                            <li class="mb-2 text-muted">Neckline Cleanup</li>
+                            <li class="mb-2 text-muted">Style Consultation</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline-light w-100">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card featured fade-in">
+                        <h4>Executive Package</h4>
+                        <div class="price">$65</div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 text-muted">Precision Haircut</li>
+                            <li class="mb-2 text-muted">Beard Trim & Shape</li>
+                            <li class="mb-2 text-muted">Hot Towel Treatment</li>
+                            <li class="mb-2 text-muted">Scalp Massage</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card fade-in">
+                        <h4>Signature Shave</h4>
+                        <div class="price">$45</div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2 text-muted">Hot Towel Prep</li>
+                            <li class="mb-2 text-muted">Straight Razor Shave</li>
+                            <li class="mb-2 text-muted">Post-Shave Balm</li>
+                            <li class="mb-2 text-muted">Facial Massage</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline-light w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Our Work</h2>
+                    <p class="text-muted">Browse our gallery of precision cuts and styles.</p>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Barber styling client's hair" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/897270/pexels-photo-897270.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Beard trimming service" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?_gl=1*z79nux*_ga*NTQ4ODI2MzI2LjE3NjM4MDIxNjI.*_ga_8JE65Q40S6*czE3NjM4MjU3NDkkbzIkZzEkdDE3NjM4MjYzNzMkajEyJGwwJGgw?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Barber shop interior" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Barber tools on table" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/3998425/pexels-photo-3998425.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Barber working on client" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item fade-in">
+                        <img src="https://images.pexels.com/photos/3992872/pexels-photo-3992872.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Barber finishing haircut" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Client Testimonials</h2>
+                    <p class="text-muted">Hear what our clients say about their experience.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <div class="testimonial-card text-center">
+                                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Michael Johnson" class="testimonial-img">
+                                            <h5>Michael Johnson</h5>
+                                            <p class="text-muted">"The attention to detail at EliteCuts is unmatched. My barber took the time to understand exactly what I wanted and delivered beyond expectations."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <div class="testimonial-card text-center">
+                                            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="David Wilson" class="testimonial-img">
+                                            <h5>David Wilson</h5>
+                                            <p class="text-muted">"I've been to many barbers, but the hot towel shave here is an experience like no other. I leave feeling refreshed and looking sharp every time."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Meet Our Barbers</h2>
+                    <p class="text-muted">Our master barbers bring years of experience and artistry to every cut.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-card fade-in">
+                        <div class="team-img" style="background-image: url('https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop')"></div>
+                        <div class="team-content">
+                            <h4>Marcus Johnson</h4>
+                            <p class="text-gold">Master Barber</p>
+                            <p class="text-muted">With over 15 years of experience, Marcus specializes in classic cuts and modern fades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card fade-in">
+                        <div class="team-img" style="background-image: url('https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop')"></div>
+                        <div class="team-content">
+                            <h4>James Wilson</h4>
+                            <p class="text-gold">Beard Specialist</p>
+                            <p class="text-muted">James is our beard grooming expert, known for his precision shaping and styling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card fade-in">
+                        <div class="team-img" style="background-image: url('https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop')"></div>
+                        <div class="team-content">
+                            <h4>Robert Davis</h4>
+                            <p class="text-gold">Senior Stylist</p>
+                            <p class="text-muted">Robert brings creativity and technical skill to every cut, specializing in textured styles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mx-auto text-center">
+                    <h2 class="mb-3">Frequently Asked Questions</h2>
+                    <p class="text-muted">Find answers to common questions about our services.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    How far in advance should I book an appointment?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We recommend booking at least 3-5 days in advance to secure your preferred time slot. For weekend appointments, we suggest booking 1-2 weeks ahead.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    What is your cancellation policy?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We require 24 hours notice for cancellations. Late cancellations may be subject to a 50% fee. No-shows will be charged the full service amount.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Do you offer grooming products for purchase?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we carry a selection of premium grooming products including pomades, beard oils, and shaving supplies. Our barbers can recommend products tailored to your needs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-7 mx-auto text-center">
+                    <h2 class="mb-3">Book Your Appointment</h2>
+                    <p class="text-muted">Ready for your premium grooming experience? Contact us or book online.</p>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="contact-info fade-in">
+                        <h4 class="mb-4">Contact Information</h4>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Location</h5>
+                                <p class="text-muted mb-0">123 Luxury Avenue, Premium District, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p class="text-muted mb-0">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p class="text-muted mb-0">info@elitecuts.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Hours</h5>
+                                <p class="text-muted mb-0">Mon-Sat: 9am-7pm, Sun: 10am-4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card fade-in" id="booking">
+                        <h4 class="mb-4">Book Your Appointment</h4>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Your Phone">
+                                        <label for="phone">Your Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="service">
+                                            <option selected>Select Service</option>
+                                            <option value="1">Classic Haircut - $35</option>
+                                            <option value="2">Beard Grooming - $25</option>
+                                            <option value="3">Hot Towel Shave - $45</option>
+                                            <option value="4">Executive Package - $65</option>
+                                        </select>
+                                        <label for="service">Service</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control"placeholder="Leave a message here" id="message" style="height: 144px;resize: none;"></textarea>
+                                        <label for="message">Special Requests</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">Book Appointment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="text-gold mb-3">GrowZone</h3>
+                    <p class="text-muted mb-4">Precision grooming with luxury experience. Where style meets tradition.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-muted text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#services" class="text-muted text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="#products" class="text-muted text-decoration-none">Products</a></li>
+                        <li class="mb-2"><a href="#pricing" class="text-muted text-decoration-none">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-3">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-muted"><i class="fas fa-map-marker-alt me-2 text-gold"></i>123 Luxury Ave, NY 10001</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-phone me-2 text-gold"></i>(555) 123-4567</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-envelope me-2 text-gold"></i>info@elitecuts.com</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-3">Newsletter</h5>
+                    <p class="text-muted mb-3">Subscribe for grooming tips and exclusive offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-muted mb-0">©2025 GrowZone. All rights reserved.</p>
+                    <p class="text-muted mb-0">Designed with ❤️ for Business Growth.</p>                
+</div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu on link click
+        const navLinks = document.querySelectorAll('.navbar-nav a');
+        const navCollapse = document.getElementById('navbarNav');
+
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                // Check if the menu is open (only happens on mobile)
+                if (window.innerWidth < 992 && navCollapse.classList.contains('show')) {
+                    // Manually trigger the collapse hide method
+                    const bsCollapse = bootstrap.Collapse.getInstance(navCollapse) || new bootstrap.Collapse(navCollapse, {toggle: false});
+                    bsCollapse.hide();
+                }
+            });
+        });
+
+        // Back to top button logic
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade in animation on scroll
+        function checkFade() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Admin JSON configuration snippet
+        const adminConfig = {
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Matte Pomade",
+                    "price": 24.99,
+                    "category": "styling"
+                },
+                {
+                    "id": 2,
+                    "name": "Professional Razor",
+                    "price": 39.99,
+                    "category": "shaving"
+                },
+                {
+                    "id": 3,
+                    "name": "Beard Oil",
+                    "price": 19.99,
+                    "category": "beard"
+                }
+            ],
+            "services": [
+                {
+                    "id": 1,
+                    "name": "Classic Cut",
+                    "price": 35,
+                    "duration": 30
+                },
+                {
+                    "id": 2,
+                    "name": "Executive Package",
+                    "price": 65,
+                    "duration": 60
+                },
+                {
+                    "id": 3,
+                    "name": "Signature Shave",
+                    "price": 45,
+                    "duration": 45
+                }
+            ]
+        };
+    </script>
+</body>
+</html>
